@@ -22,6 +22,6 @@ public class AccountOutputDTOAssembler {
 	}
 
 	public List<AccountOutputDTO> toCollectionDTO(Collection<Account> accounts) {
-		return accounts.stream().map(account -> toDTO(account)).collect(Collectors.toList());
+		return accounts.stream().map(this::toDTO).collect(Collectors.toList());
 	}
 }

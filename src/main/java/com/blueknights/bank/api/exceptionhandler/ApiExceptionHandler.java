@@ -4,6 +4,7 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.blueknights.bank.domain.exception.InsufficientFundsException;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -235,5 +236,11 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
 	private String joinPath(List<Reference> references) {
 		return references.stream().map(ref -> ref.getFieldName()).collect(Collectors.joining("."));
+	}
+
+	public ResponseEntity<?> insufficientFunds(InsufficientFundsException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+		Problem problem = createProblemBuilder(status, ProblemType.BUSINESS_ERROR, ex.getMessage())
+							.userMessage(ex.getMessage()).build();
+		return handleExceptionInternal(ex, problem, headers, status, request);
 	}
 }

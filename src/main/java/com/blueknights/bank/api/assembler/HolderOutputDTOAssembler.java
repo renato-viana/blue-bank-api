@@ -22,6 +22,6 @@ public class HolderOutputDTOAssembler {
 	}
 
 	public List<HolderOutputDTO> toCollectionDTO(Collection<Holder> holders) {
-		return holders.stream().map(holder -> toDTO(holder)).collect(Collectors.toList());
+		return holders.stream().map(this::toDTO).collect(Collectors.toList());
 	}
 }

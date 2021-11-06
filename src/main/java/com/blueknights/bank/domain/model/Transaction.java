@@ -19,18 +19,26 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "CONTA_ORIGEN", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "origin_account_id")
     private Account originAccount;
 
-    @Column(name = "CONTA_DESTINO", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
-    private Account detinyAccount;
+    @JoinColumn(name = "destiny_account_id")
+    private Account destinyAccount;
 
-    @Column(name = "VALOR", nullable = false)
+    @Column(name = "TRANSACTION_VALUE", nullable = false)
     private BigDecimal value;
 
-    @Column(name = "DATA_TRANSACAO", nullable = false)
+    @Column(name = "TRANSACTION_DATE", nullable = false)
     @CreationTimestamp
     private OffsetDateTime transactionDate;
+
+    public Transaction() {}
+
+    public Transaction(Account originAccount, Account destinyAccount, BigDecimal value) {
+        this.originAccount = originAccount;
+        this.destinyAccount = destinyAccount;
+        this.value = value;
+    }
 }

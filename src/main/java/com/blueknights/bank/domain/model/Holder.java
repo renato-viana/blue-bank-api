@@ -2,12 +2,7 @@ package com.blueknights.bank.domain.model;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,7 +23,7 @@ public class Holder {
 	@Column(nullable = false)
 	private String email;	
 
-	@OneToMany(mappedBy = "holder")
+	@OneToMany(mappedBy = "holder", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Account> accounts;
 
 }
