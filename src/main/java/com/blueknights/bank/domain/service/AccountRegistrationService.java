@@ -4,18 +4,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.blueknights.bank.domain.model.Holder;
-import com.blueknights.bank.domain.repository.AccountHolderRepository;
+import com.blueknights.bank.domain.exception.AccountNotFoundException;
+import com.blueknights.bank.domain.model.Account;
+import com.blueknights.bank.domain.repository.AccountRepository;
 
 @Service
 public class AccountRegistrationService {
 
 	@Autowired
-	private AccountHolderRepository accountHolderRepository;
+	private AccountRepository accountRepository;
 
 	@Transactional
-	public Holder salvar(Holder holder) {
-		return accountHolderRepository.save(holder);
+	public Account save(Account account) {
+		return accountRepository.save(account);
+	}
+
+	public Account fetchOrFail(Long accountId) {
+		return accountRepository.findById(accountId).orElseThrow(() -> new AccountNotFoundException(accountId));
 	}
 
 }

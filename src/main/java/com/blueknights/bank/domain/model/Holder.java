@@ -1,13 +1,13 @@
 package com.blueknights.bank.domain.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,15 +22,13 @@ public class Holder {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank
 	@Column(nullable = false)
 	private String name;
 
-	@Email
 	@Column(nullable = false)
 	private String email;	
 
-	@Embedded
-	private Account account;
+	@OneToMany(mappedBy = "holder")
+	private List<Account> accounts;
 
 }

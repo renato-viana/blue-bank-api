@@ -3,28 +3,38 @@ package com.blueknights.bank.domain.model;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
-@Embeddable
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
 public class Account {
 
+	@EqualsAndHashCode.Include
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "account_holder_id")
+	@JoinColumn(name = "holder_id")
 	private Holder holder;
 
-	@Column(name = "account_number", nullable = false)
+	@Column(nullable = false)
 	private String number;
 
-	@Column(name = "account_agency", nullable = false)
+	@Column(nullable = false)
 	private String agency;
 
-	@Column(name = "account_balance", nullable = false)
+	@Column(nullable = false)
 	protected BigDecimal balance;
 
 }
