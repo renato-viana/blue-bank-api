@@ -2,7 +2,9 @@ package com.blueknights.bank.domain.exception;
 
 public class InsufficientFundsException extends BusinessException {
 
-    public InsufficientFundsException(String message) {
+	private static final long serialVersionUID = 1L;
+
+	public InsufficientFundsException(String message) {
         super(message);
     }
 

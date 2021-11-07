@@ -23,7 +23,7 @@ public class Holder {
 	@Column(nullable = false)
 	private String email;	
 
-	@OneToMany(mappedBy = "holder", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "holder")
 	private List<Account> accounts;
 
 }

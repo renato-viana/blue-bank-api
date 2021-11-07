@@ -1,13 +1,21 @@
 package com.blueknights.bank.domain.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.CreationTimestamp;
-
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
-import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -24,8 +32,8 @@ public class Transaction {
     private Account originAccount;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "destiny_account_id")
-    private Account destinyAccount;
+    @JoinColumn(name = "destination_account_id")
+    private Account destinationAccount;
 
     @Column(name = "TRANSACTION_VALUE", nullable = false)
     private BigDecimal value;
@@ -36,9 +44,9 @@ public class Transaction {
 
     public Transaction() {}
 
-    public Transaction(Account originAccount, Account destinyAccount, BigDecimal value) {
+    public Transaction(Account originAccount, Account destinationAccount, BigDecimal value) {
         this.originAccount = originAccount;
-        this.destinyAccount = destinyAccount;
+        this.destinationAccount = destinationAccount;
         this.value = value;
     }
 }

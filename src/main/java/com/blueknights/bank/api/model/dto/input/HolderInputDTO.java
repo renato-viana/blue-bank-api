@@ -23,5 +23,5 @@ public class HolderInputDTO {
 
 	@Valid
 	@NotNull
-	List<AccountInputDTO> accounts = new ArrayList<AccountInputDTO>();
+	private List<AccountInputDTO> accounts = new ArrayList<AccountInputDTO>();
 }

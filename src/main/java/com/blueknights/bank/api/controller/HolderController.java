@@ -18,8 +18,10 @@ import com.blueknights.bank.api.assembler.HolderInputDTODisassembler;
 import com.blueknights.bank.api.assembler.HolderOutputDTOAssembler;
 import com.blueknights.bank.api.model.dto.input.HolderInputDTO;
 import com.blueknights.bank.api.model.dto.output.HolderOutputDTO;
+import com.blueknights.bank.domain.model.Account;
 import com.blueknights.bank.domain.model.Holder;
 import com.blueknights.bank.domain.repository.HolderRepository;
+import com.blueknights.bank.domain.service.AccountRegistrationService;
 import com.blueknights.bank.domain.service.HolderRegistrationService;
 
 @RestController
@@ -38,15 +40,18 @@ public class HolderController {
 	@Autowired
 	private HolderInputDTODisassembler holderInputDTODisassembler;
 
+	@Autowired
+	private AccountRegistrationService accountRegistrationService;
+
 	@GetMapping
-	public List<HolderOutputDTO> listar() {
+	public List<HolderOutputDTO> findAll() {
 		List<Holder> holders = holderRepository.findAll();
 
 		return holderOutputDTOAssembler.toCollectionDTO(holders);
 	}
 
 	@GetMapping("/{holderId}")
-	public HolderOutputDTO buscar(@PathVariable Long holderId) {
+	public HolderOutputDTO findById(@PathVariable Long holderId) {
 		Holder holder = holderRegistrationService.fetchOrFail(holderId);
 
 		return holderOutputDTOAssembler.toDTO(holder);
@@ -56,9 +61,20 @@ public class HolderController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public HolderOutputDTO add(@RequestBody @Valid HolderInputDTO holderInput) {
 		Holder holder = holderInputDTODisassembler.toDomainObject(holderInput);
-		
-		holder = holderRegistrationService.save(holder);
+
+		Holder currentHolder = holderRegistrationService.save(holder);
+
+		addHolderAccount(holder, currentHolder);
 
 		return holderOutputDTOAssembler.toDTO(holder);
+	}
+
+	private void addHolderAccount(Holder holder, Holder currentHolder) {
+		List<Account> accounts = holder.getAccounts();
+
+		accounts.stream().map(account -> {
+			account.setHolder(currentHolder);
+			return account;
+		}).forEach(accountRegistrationService::save);
 	}
 }
