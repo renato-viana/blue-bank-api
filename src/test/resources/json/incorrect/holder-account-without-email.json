@@ -1,0 +1,10 @@
+{
+	"cpf": "692.431.860-60",
+	"name": "Renato",
+	"email": "",
+	"accounts": [{
+		"number": "23550-9",
+		"agency": "8506",
+		"balance": 2000
+	}]
+}
