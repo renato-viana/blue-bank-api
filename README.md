@@ -1,4 +1,9 @@
 # Blue Bank
+<p align="center">
+  <img src="https://img.shields.io/static/v1?label=Java&message=11&color=blue&style=for-the-badge&logo=java"/>
+  <img src="https://img.shields.io/static/v1?label=Springboot&message=2.5.6&color=blue&style=for-the-badge&logo=springboot"/>
+  <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge"/>
+</p>
 Seja bem-vindo a API do Blue Bank, simples prática e rápida, com este projeto você consegue criar contas, fazer transferências e listar as transferências efetuadas de forma simples e direta.
 
 O projeto foi criado usando [Spring](https://spring.io/) um dos frameworks que vem crescendo cada vez mais no mundo Java
