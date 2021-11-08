@@ -194,7 +194,7 @@ Para rodar o projeto basta fazer o clonet, abrir em uma IDE (Eclipse, Intellij, 
   <summary><span style="color: blue; font-weight: bold">GET</span> | LISTAR TRANSFERÊNCIAS</summary>
   
   ### Listar todas as transferências efetuadas
-  [localhost:8080/accounts/:id/transfer](localhost:8080/accounts/1/transfer)
+  [http://localhost:8080/transactions](http://localhost:8080/transactions)
 
 ### Response
 200 | <span style="color: green;">SUCCESS</span>
