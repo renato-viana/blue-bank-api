@@ -7,16 +7,6 @@ O projeto foi criado usando [Spring](https://spring.io/) um dos frameworks que v
 
 > 💡 Projeto de conclusão do programa IBM Blue Academy promovido por [IBM](https://www.ibm.com/br-pt) e [Gama Academy](https://www.gama.academy/)
 
-
-<br>
-
-## Autores
-
-[Renato Viana](https://github.com/renato-viana)
-<br>
-[Mateus André](https://github.com/MateusAndraste)
-
-
 <br>
 <br>
 
@@ -239,3 +229,10 @@ Para rodar o projeto basta fazer o clonet, abrir em uma IDE (Eclipse, Intellij, 
 </details>
 
 <br>
+
+
+
+# Desenvolvedores
+
+| [<img src="https://avatars.githubusercontent.com/u/52897765?v=4" style="border-radius: 100px;" width=100><br><sub>Renato Viana</sub>](https://github.com/renato-viana) |  [<img src="https://avatars.githubusercontent.com/u/35244621?v=4" style="border-radius: 100px;" width=100><br><sub>Mateus André</sub>](https://github.com/MateusAndraste) |  |
+| :---: | :---: | :---: 
