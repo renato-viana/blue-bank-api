@@ -3,7 +3,7 @@ CREATE TABLE transaction
     id                 bigint        NOT NULL auto_increment,
     origin_account_id  BIGINT        NOT NULL,
     destination_account_id BIGINT        NOT NULL,
-    transaction_value  VARCHAR(4000) NOT NULL,
+    transaction_value  VARCHAR(255) NOT NULL,
     transaction_date   DATETIME      NOT NULL,
 
     PRIMARY KEY (ID),
